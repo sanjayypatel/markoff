@@ -70,3 +70,6 @@ gem 'factory_girl_rails', '~> 4.0'
 group :test do
   gem 'capybara'
 end
+
+# Include Twitter Bootstrap - Sass for styling
+gem 'bootstrap-sass'

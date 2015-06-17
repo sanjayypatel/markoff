@@ -2,23 +2,32 @@
 <html>
 <head>
   <title>Blocitoff</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<ul>
-  <% if current_user %>
-    <li><%= current_user.email %></li>
-    <li><%= link_to "Sign Out", destroy_user_session_path(current_user), method: :delete %></li>
-  <% else %>
-    <li><%= link_to "Sign In", new_user_session_path %></li>
-    <li><%= link_to "Sign Up", new_user_registration_path %></li>
-  <% end %>
-</ul>
-
-<%= yield %>
-
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to root_path, class: 'navbar-brand' do %>
+            <span class="glyphicon glyphicon-th-list"> Blocitoff</span>
+          <% end %>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li><%= current_user.email %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path(current_user), method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <% end %>
+      </ul>
+      </div>
+    </nav>      
+    <%= yield %>
+  </div>
 </body>
 </html>
