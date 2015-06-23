@@ -1,0 +1,6 @@
+# Be sure to include these vars in your own application.yml file (gitignore this!)
+
+SENDGRID_USERNAME: 
+SENDGRID_PASSWORD: 
+
+SECRETE_KEY_BASE:

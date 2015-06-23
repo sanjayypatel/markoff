@@ -2,13 +2,52 @@
 <html>
 <head>
   <title>Blocitoff</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <%= link_to root_path, class: 'navbar-brand' do %>
+            <span class="glyphicon glyphicon-th-list"> Blocitoff</span>
+          <% end %>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li><%= link_to current_user.email, edit_user_registration_path %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <% end %>
+      </ul>
+      </div>
+    </nav>
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
+      <% elsif flash[:error] %>
+      <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:error] %>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

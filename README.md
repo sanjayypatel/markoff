@@ -4,6 +4,11 @@
 
 A self-destructing to-do list app. Part of Bloc's Ruby on Rails Training.
 
+##Application Description:
+
+A to-do list app with self-destructing tasks. Most to-do list apps gather old, outdated tasks, until performing housekeeping on your to-do list eats up all the time you're supposed to be saving! Blocitoff doesn't let the bloat get the upper hand.  After 7 days, a task that hasn't been marked complete will self-destruct, doing the housekeeping for you.
+
+
 User Stories: 
 * As a user, I want to sign up for a free account by providing a user name, password and email.
 * As a user, I want to sign in and out of Blocitoff.
