@@ -1,4 +1,4 @@
-if Rails.env.development?
+if Rails.env.development? || Rails.env.production?
   
   # setup sendgrid for email confirmations in development
   ActionMailer::Base.delivery_method = :smtp
