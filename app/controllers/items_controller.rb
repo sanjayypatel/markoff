@@ -6,9 +6,9 @@ class ItemsController < ApplicationController
     authorize @item
     if @item.save
       @new_item = Item.new
-      flash[:notice] = "Comment created successfully."
+      flash[:notice] = "Item created successfully."
     else
-      flash[:error] = "There was an error saving comment. Please try again."
+      flash[:error] = "There was an error saving item. Please try again."
     end
     
     respond_to do |format|

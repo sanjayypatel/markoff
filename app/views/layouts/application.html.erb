@@ -3,49 +3,56 @@
 <head>
   <title>Blocitoff</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
   <div class="container">
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <%= link_to (user_signed_in? ? user_path(current_user) : root_path), class: 'navbar-brand' do %>
-            <span class="glyphicon glyphicon-th-list"> Blocitoff</span>
-          <% end %>
+    <header>
+      <h1><%= link_to (user_signed_in? ? user_path(current_user) : root_path) do %>
+        <span class="fa fa-check-square-o"> Blocitoff</span>
+      <% end %>
+      </h1>
+    </header>
+    <div class="row gutters">
+      <div class="column-4">
+        <nav class="nav-responsive-center">
+            <ul>
+              <% if current_user %>
+                <li><%= link_to (current_user.name || current_user.email), edit_user_registration_path %></li>
+                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "Sign In", new_user_session_path %></li>
+                <li><%= link_to "Sign Up", new_user_registration_path %></li>
+              <% end %>
+            </ul>
+        </nav>
+      </div>
+      <div class="column-8">
+        <div class="well bg-white">
+          <%= yield %>
         </div>
-        <ul class="nav navbar-nav navbar-right">
-          <% if current_user %>
-            <li><%= link_to current_user.email, edit_user_registration_path %></li>
-            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-          <% else %>
-            <li><%= link_to "Sign In", new_user_session_path %></li>
-            <li><%= link_to "Sign Up", new_user_registration_path %></li>
-          <% end %>
-      </ul>
       </div>
-    </nav>
-    <% if flash[:notice] %>
-      <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <%= flash[:notice] %>
-      </div>
-      <% elsif flash[:error] %>
-      <div class="alert alert-danger">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <%= flash[:error] %>
-      </div>
-    <% elsif flash[:alert] %>
-      <div class="alert alert-warning">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <%= flash[:alert] %>
-      </div>
-    <% end %>
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3">
-        <%= yield %>
+      <div class="column-4">
+        <% if flash[:notice] %>
+          <div class="well bg-light-green close-this">
+            <button type="button" class="close">x</button>
+            <p><%= flash[:notice] %></p>
+          </div>
+          <% elsif flash[:error] %>
+          <div class="well bg-light-red close-this">
+            <button type="button" class="close">x</button>
+            <p><%= flash[:error] %></p>
+          </div>
+        <% elsif flash[:alert] %>
+          <div class="well bg-light-yellow close-this">
+            <button type="button" class="close">x</button>
+            <p><%= flash[:alert] %></p>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

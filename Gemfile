@@ -79,3 +79,5 @@ gem 'pundit'
 
 # Use Concise.css for styling
 gem 'concisecss', '~> 2.0.0'
+
+gem 'font-awesome-sass'
