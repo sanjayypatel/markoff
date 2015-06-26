@@ -19,7 +19,7 @@
     </header>
     <div class="row gutters">
       <div class="column-4">
-        <nav class="nav-responsive-center">
+        <nav class="nav-responsive-center no-hover">
             <ul>
               <% if current_user %>
                 <li><%= link_to (current_user.name || current_user.email), edit_user_registration_path %></li>
@@ -32,7 +32,7 @@
         </nav>
       </div>
       <div class="column-8">
-        <div class="well bg-white">
+        <div class="center-column">
           <%= yield %>
         </div>
       </div>

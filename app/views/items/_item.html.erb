@@ -1,4 +1,3 @@
-
 <%= content_tag :div, id: "item-#{item.id}" do %>
-<h4><%= link_to "", [user, item], method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %> <%= item.name %><small>, <%= item.days_left %> days left.</small></h4>
+<h4><%= link_to "", [user, item], method: :delete, remote: true, class: 'fa fa-check no-hover' %> <%= item.name %>,<small> <%= item.days_left %> days left.</small></h4>
 <% end %>
