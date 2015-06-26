@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
 
   def create
-
     @user = current_user
     @item = @user.items.build(item_params)
+    authorize @item
     if @item.save
       @new_item = Item.new
       flash[:notice] = "Comment created successfully."
@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
+    authorize @item
     if @item.destroy
       flash[:notice] = "Item deleted successfully."
     else

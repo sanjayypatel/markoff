@@ -73,3 +73,6 @@ end
 
 # Include Twitter Bootstrap - Sass for styling
 gem 'bootstrap-sass'
+
+# Pundit for user authorization
+gem 'pundit'
