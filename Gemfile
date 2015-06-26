@@ -72,7 +72,10 @@ group :test do
 end
 
 # Include Twitter Bootstrap - Sass for styling
-gem 'bootstrap-sass'
+# gem 'bootstrap-sass'
 
 # Pundit for user authorization
 gem 'pundit'
+
+# Use Concise.css for styling
+gem 'concisecss', '~> 2.0.0'
