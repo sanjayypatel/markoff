@@ -1,8 +1,8 @@
 #README
 
-#Blocitoff
+#Markoff
 
-A self-destructing to-do list app. Part of Bloc's Ruby on Rails Training.
+A self-destructing to-do list app.  Based on 'Blocitoff' from of Bloc.io's Ruby on Rails Training.
 
 ##Application Description:
 
